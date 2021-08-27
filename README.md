@@ -25,3 +25,6 @@ subCount.innerHTML = strc(data["items"][0].statistics.videoCount);
 ### technologies
 - [YouTube API V3](https://developers.google.com/youtube/v3/getting-started)
 - Odometer
+
+<br/>
+<img src="https://img.shields.io/badge/clone-148-green">
