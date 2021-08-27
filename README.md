@@ -1,4 +1,3 @@
-# YouTube-Statistics-Tracker
 <div align="center">
   <img src="https://raw.githubusercontent.com/elwynynion/YouTube-Statistics-Tracker/main/preview.png">
 </div>
