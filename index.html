@@ -1,0 +1,69 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0" />
+    <!-- Primary Meta Tags -->
+    <title>YouTube Statistics Tracker</title>
+    <meta name="title" content="YouTube Statistics Tracker, Subscribers Counter, Views Counter, Videos Counter">
+    <meta name="description" content="Simple YouTube Statistics Tracker with Odometer, Subscribers Counter, Views Counter, Videos Counter">
+        
+    <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" sizes="16x16"/>
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" sizes="32x32"/>
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" sizes="48x48"/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/style.css">
+    <script src="/assets/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.6/odometer.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="counter">
+        <h1 class="youtuber-name">PewDiePie <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/285/rocket_1f680.png" class="emoji" alt="emoji"></h1>
+        <div class="odometer" id="subCount">0</div>
+        <p>Subscribers</p>
+    </div>
+</div>
+
+<script src="/api.js"></script>
+<script>
+const subCount = document.getElementById("subCount");
+const delay = 4000;
+
+function strc(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+let getSubscribers = () => {
+    fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${youtubeUser}&key=${youtubeKey}`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            // subCount.innerHTML = data["items"][0].statistics.viewCount;
+            // Also you can changed it in to subscriberCount, viewCount, videoCount.
+            subCount.innerHTML = strc(data["items"][0].statistics.subscriberCount);
+        });
+};
+
+// Uncomment this if you want to use the delay
+// setInterval(() => {
+//     getSubscribers();
+// }, delay);
+
+getSubscribers();
+
+</script>
+</body>
+</html>
