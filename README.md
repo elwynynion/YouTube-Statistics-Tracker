@@ -27,4 +27,4 @@ subCount.innerHTML = strc(data["items"][0].statistics.videoCount);
 - Odometer
 
 <br/>
-<img src="https://img.shields.io/badge/clone-148-green">
+<img src="https://img.shields.io/badge/clone-239-green">
